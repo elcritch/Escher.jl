@@ -16,7 +16,7 @@ Window(;
     dir="ltr") =
     Window(Signal(Bool, alive), Signal(Any, dimension), Signal(Any, route), "ltr", Signal(Any, "basics"))
 
-resolve_asset(tup :: (@compat Tuple{AbstractString, AbstractString}), prefix ="/pkg", joinfn=(x, y) -> x * "/" * y) = begin
+resolve_asset(tup :: (@compat Tuple{AbstractString, AbstractString}); prefix ="/pkg", joinfn=(x, y) -> x * "/" * y) = begin
     pkg = tup[1]
     slug = tup[2]
     path = Pkg.dir(pkg, "assets", slug * ".html")
@@ -27,4 +27,4 @@ resolve_asset(tup :: (@compat Tuple{AbstractString, AbstractString}), prefix ="/
     end
 end
 
-resolve_asset(slug::AbstractString) = resolve_asset(("Escher", slug))
+resolve_asset(slug::AbstractString; kwargs...) = resolve_asset(("Escher", slug); kwargs...)
