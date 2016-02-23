@@ -14,7 +14,7 @@ function teelog(x) {
         } else {
             new_uri = "ws:";
         }
-        new_uri += "//" + loc.host;
+        new_uri += "//" + loc.host + ":8000";
         new_uri += "/socket/" + suffix;
         return new_uri;
     }
